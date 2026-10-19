@@ -19,7 +19,6 @@ The webserver was first built in 2018–2019 at the Agriculture Knowledge Manage
 - [Training data](#training-data)
 - [Performance](#performance)
 - [Limitations](#limitations)
-- [Changes from the 2019 version](#changes-from-the-2019-version)
 - [Installation and usage](#installation-and-usage)
 - [Repository layout](#repository-layout)
 - [Credits](#credits)
@@ -179,18 +178,6 @@ The locator is about 13 times better than chance but is not accurate enough to n
 - Predictions use the single RNAfold MFE structure.
 - The mature locator predicts the 5′ start. The 21 nt length shown is a default, since most plant miRNAs are 21 nt (Axtell, 2013).
 - The primary scan scores windows independently and does not model DCL1 processing.
-
-## Changes from the 2019 version
-
-| Area | 2019 version | This version |
-|---|---|---|
-| Security | The sequence was inserted into a `shell_exec` command string, which allowed command injection | `proc_open` with an argument array (no shell), server-side validation in PHP and Python, length limits, HTML escaping of all output |
-| Concurrency | Every request wrote to the same CSV files, so simultaneous users could overwrite each other's input | Data passes in memory as JSON; nothing is written to shared files |
-| Features | 7 of 87 features were computed; the other 80 were set to zero | All 39 model features are computed and verified against the training table |
-| Mature model | Training rows encoded the wrong region (precursor and mature lists were out of order), and the page crashed | Training set rebuilt from the raw sequences with label cleaning; the page works end to end and reports held-out accuracy |
-| Primary scan | Crashed (decimal list index) | Works; reports up to five non-overlapping windows |
-| Models | Pickles tied to scikit-learn 0.20 and Python 3.6 | Retrained with pinned current versions; training scripts included |
-| Pages | Typos, missing Help page, hardcoded server paths | Text corrected, Help page added, layout works on small screens |
 
 ## Installation and usage
 
