@@ -273,7 +273,3 @@ Developed by [Pragya Kesarwani](https://www.linkedin.com/in/pragya-kesarwani-872
 - Pedregosa F. et al. (2011). Scikit-learn: machine learning in Python. *Journal of Machine Learning Research* 12, 2825–2830.
 - Xue C. et al. (2005). Classification of real and pseudo microRNA precursors using local structure-sequence features and support vector machine. *BMC Bioinformatics* 6, 310.
 - Zhang B. H. et al. (2006). Evidence that miRNAs are different from other RNAs. *Cellular and Molecular Life Sciences* 63, 246–254.
-
-## License
-
-No license has been chosen yet. Please confirm with ICAR–IARI before adding one.
