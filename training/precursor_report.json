@@ -1,0 +1,41 @@
+{
+  "rows_original": 7070,
+  "rows_after_dedup": 5680,
+  "class_counts": {
+    "real": 3064,
+    "pseudo": 2616
+  },
+  "scikit_learn": "1.9.1",
+  "cv_39_features": {
+    "n": 5680,
+    "accuracy": 0.9799295774647887,
+    "sensitivity": 0.9758485639686684,
+    "specificity": 0.9847094801223242,
+    "mcc": 0.9597157285143049,
+    "auc": 0.9967324248848222
+  },
+  "cv_87_stored_features": {
+    "n": 5680,
+    "accuracy": 0.9860915492957747,
+    "sensitivity": 0.9840078328981723,
+    "specificity": 0.9885321100917431,
+    "mcc": 0.9720458248838747,
+    "auc": 0.9984856696289554
+  },
+  "cv_length_only_baseline": {
+    "n": 5680,
+    "accuracy": 0.7257042253521127,
+    "sensitivity": 0.816579634464752,
+    "specificity": 0.6192660550458715,
+    "mcc": 0.4466411466574788,
+    "auc": 0.8068585641882451
+  },
+  "independent_test_39_features": {
+    "n": 71,
+    "accuracy": 0.8873239436619719,
+    "sensitivity": 0.8888888888888888,
+    "specificity": 0.8823529411764706,
+    "mcc": 0.7211361509955262,
+    "auc": 0.9379084967320261
+  }
+}

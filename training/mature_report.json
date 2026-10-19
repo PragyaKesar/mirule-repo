@@ -1,0 +1,13 @@
+{
+  "precursors_with_1_or_2_mature_sites": 17653,
+  "train_precursors": 2000,
+  "train_windows": 42121,
+  "train_positive_windows": 2121,
+  "test_precursors": 600,
+  "mean_known_starts_per_test_precursor": 1.0733333333333333,
+  "top1_exact_start": 0.07,
+  "top1_within_2nt": 0.15833333333333333,
+  "random_start_baseline_exact": 0.005275511379957023,
+  "fit_seconds": 5,
+  "scikit_learn": "1.9.1"
+}
