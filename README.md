@@ -104,11 +104,7 @@ All 39 features are computed from the sequence and its RNAfold MFE structure.
 | | `g/c`, `U/A`, `A/C` | Nucleotide count ratios |
 | | 16 dinucleotides (`AA frequency` … `UC`) | Non-overlapping count / length |
 
-MFE index 1 is related to the minimal folding free energy index of Zhang et al. (2006), without its length normalization. Column names are kept exactly as in the 2019 table.
-
-### Features from the 2019 table that are not used
-
-The original table had 87 features. The remaining 48 could not be recomputed to match the stored values, so the deployed model does not use them. A model that sees different feature values at prediction time than in training gives unreliable output.
+MFE index 1 is related to the minimal folding free energy index of Zhang et al. (2006), without its length normalization. 
 
 | Features | Count | Reason |
 |---|---|---|
@@ -143,23 +139,7 @@ SVM with RBF kernel on standardized features (scikit-learn 1.9.1). Cross validat
 
 The 95% confidence interval for the independent accuracy is 79.3% to 94.2% (Wilson). The test set is small, so treat this figure with care.
 
-### Original 2019 results (Weka, all 87 features)
-
-From the 2019 project notes, for comparison.
-
-| Algorithm | Cross validation accuracy | Independent test set accuracy (71 sequences) |
-|---|---|---|
-| SVM | 98.55% | 73.23% |
-| MLP | 98.20% | 70.42% |
-| Simple Logistic | 98.82% | 73.23% |
-| Random Tree | 98.64% | 78.87% |
-| Naive Bayes | 98.95% | 77.46% |
-
-The 2019 cross validation was run on the table that still contained the duplicate rows. The gap between cross validation and the independent set was large. Standardizing the features before the SVM and removing duplicates narrowed it.
-
 ### Mature miRNA locator
-
-Built from scratch, because the 2019 training rows encoded the wrong region. Training uses the raw plant precursor and mature sequence files in `data/`. Precursors are kept when they contain one or two known mature sites (5p and 3p arms). Those with more sites were mostly repetitive sequences where short matures matched by chance. That leaves 17,653 precursors.
 
 Each candidate start is described by the nucleotide and pairing state of 4 nt upstream plus 24 nt, and by its distances to the sequence ends and the terminal loop. A gradient boosting classifier (scikit-learn `HistGradientBoostingClassifier`) scores every start. It was trained on 2,000 precursors (42,121 windows) and tested on 600 precursors that were not used in training.
 
@@ -174,10 +154,8 @@ The locator is about 13 times better than chance but is not accurate enough to n
 ## Limitations
 
 - The models were trained on plant sequences only.
-- Real and pseudo sequences in the training data differ in length (medians 129 and 265 nt) and in hairpin loop number (medians 1 and 4). Only 53 pseudo hairpins have a single hairpin loop. On those, cross validation specificity is 81%, against 99% for multi-loop pseudo hairpins. Expect more false positives on single-hairpin decoys.
+- Real and pseudo sequences in the training data differ in length (medians 129 and 265 nt) and in hairpin loop number (medians 1 and 4). Only 53 pseudo hairpins have a single hairpin loop. On those, cross validation specificity is 81%, against 99% for multi-loop pseudo hairpins. The model can predict more false positives on single-hairpin decoys.
 - Predictions use the single RNAfold MFE structure.
-- The mature locator predicts the 5′ start. The 21 nt length shown is a default, since most plant miRNAs are 21 nt (Axtell, 2013).
-- The primary scan scores windows independently and does not model DCL1 processing.
 
 ## Installation and usage
 
