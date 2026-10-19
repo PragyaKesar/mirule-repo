@@ -82,7 +82,7 @@ The web front end is PHP on Apache. It calls the Python back end (`mirule/predic
 
 ## Features used by the precursor model
 
-All 39 features are computed from the sequence and its RNAfold MFE structure. Each definition was checked against the original training table. On 3,505 real precursors whose sequences could be recovered, every feature matched the stored value in at least 99.9% of rows.
+All 39 features are computed from the sequence and its RNAfold MFE structure.
 
 | Group | Feature (column name) | Definition |
 |---|---|---|
